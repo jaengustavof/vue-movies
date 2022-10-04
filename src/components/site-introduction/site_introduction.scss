@@ -1,0 +1,23 @@
+@import '/src/assets/scss/general.scss';
+.site-introduction{
+    width: 100%;
+    background-color: $app-dark;
+    border-top: 1px solid $app-light-25;
+    &_container{
+        width: 100%;
+        max-width: 1600px;
+        margin: auto;
+        padding: 60px 20px;
+        .container-title{
+            margin-bottom: 30px;
+            @include style-text ($app-light, 55px, 70px, 400, 1px, uppercase);
+            text-align: left;
+        }
+        .container-text {
+            width: 100%;
+            max-width: 600px;
+            @include style-text ($app-light-75, 26px, 38px, 200, 1px, normal);
+            text-align: left;
+        }
+    }
+}

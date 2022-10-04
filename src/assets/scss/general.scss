@@ -1,0 +1,45 @@
+// General //
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+    font-family: 'Oswald', sans-serif;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
+
+// Colors //
+
+$app-dark: #000000;
+$app-dark-50: #00000050;
+$app-grey: #272626;
+$app-grey-light: #5d5b5b;
+$app-light: #e4e4e4;
+$app-light-75: #e4e4e475;
+$app-light-50: #e4e4e450;
+$app-light-25: #e4e4e425;
+
+$submit: #d1891e;
+
+// mixins //
+
+@mixin estructura ($direction, $wrap, $justify, $align) {
+    display: flex;
+    flex-direction: $direction;
+    flex-wrap: $wrap;
+    justify-content: $justify;
+    align-items: $align;
+  }
+  
+  
+  @mixin style-text  ($color, $font-size, $line-height, $font-weight, $letter-spacing, $text-transform){
+    color: $color;
+    font-size: $font-size;
+    line-height: $line-height;
+    font-weight: $font-weight;
+    letter-spacing: $letter-spacing;
+    text-transform: $text-transform;
+  }
+

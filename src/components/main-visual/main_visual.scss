@@ -1,0 +1,13 @@
+@import '/src/assets/scss/general.scss';
+.main-visual-container{
+    width: 100%;
+    height: calc(100vh - 100px);
+    overflow: hidden;
+    position: relative;
+    img {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 25%;
+        left: 50%;
+    }
+}

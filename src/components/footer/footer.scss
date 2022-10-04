@@ -1,0 +1,54 @@
+@import '/src/assets/scss/general.scss';
+
+footer {
+    width: 100%;
+    padding: 40px 0 20px;
+    background-color: $app-grey;
+    
+    .footer-container {
+        width: 100%;
+        max-width: 1600px;
+        margin: auto;
+        padding: 0 20px;
+        @include estructura (row, nowrap, space-between, flex-start);
+        .footer-address {
+            padding-bottom: 40px;
+            &_title {
+                text-align: left;
+                margin-bottom: 10px;
+
+                @include style-text ($app-light, 20px, 28px, 400, 2px, normal);
+            }
+            p {
+                text-align: left;
+                @include style-text ($app-light, 20px, 28px, 200, 2px, normal);
+            }
+        }
+        .footer-social {
+            @include estructura (row, nowrap, flex-end, center);
+            span {
+                @include style-text ($app-light, 20px, 28px, 200, 2px, normal);
+            }
+            .social-item {
+                margin-left: 20px;
+                color: $app-light;
+            }
+        }
+    }
+    .secondary-container {
+        width: 100%;
+        border-top: 1px solid $app-light-25;
+        margin: auto;
+        padding: 0 20px;
+        
+        .content-contaier{
+            width: 100%;
+            max-width: 1600px;
+            margin: auto;
+            padding: 0 20px;
+            margin-top: 10px;
+            @include style-text ($app-light, 16px, 28px, 200, 2px, normal);
+            @include estructura (row, nowrap, space-between, center);
+        }
+    }
+}

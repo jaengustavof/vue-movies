@@ -1,0 +1,114 @@
+@import '/src/assets/scss/general.scss';
+
+.contact-us{
+    width: 100%;
+    padding: 80px 0;
+    background-color: $app-dark;
+    .contact-us-container {
+        width: 100%;
+        max-width: 1600px;
+        margin: auto;
+        padding: 0 20px;
+        @include estructura (row, nowrap, space-between, stretch);
+        .form-container {
+            width: 40%;
+            @include estructura (column, nowrap, flex-end, stretch);
+            &_title {
+                text-align: left;
+                padding-bottom: 20px;
+                @include style-text ($app-light, 35px, 40px, 400, 2px, normal);
+            }
+            &_subtitle {
+                text-align: left;
+                padding-bottom: 20px;
+                @include style-text ($app-light, 22px, 35px, 100, 2px, normal);
+            }
+            .form-row-50 {
+                width: 100%;
+                margin-bottom: 20px;
+                @include estructura (row, nowrap, space-between, stretch);
+                label {
+                    text-align: left;
+                    padding-bottom: 5px;
+                    @include style-text ($app-light, 20px, 24px, 100, 2px, normal);
+                    }
+                
+                .input-content {
+                    width: 48%;
+                    @include estructura (column, nowrap, space-between, flex-start);
+                    input {
+                        padding: 0 10px;
+                        width: 100%;
+                        height: 50px;
+                        border-radius: 5px;
+                        background-color: $app-grey;
+                        border: none;
+                    }
+                }
+            }
+            .form-row {
+                width: 100%;
+                margin-bottom: 20px;
+                @include estructura (column, nowrap, space-between, stretch);
+                label {
+                text-align: left;
+                padding-bottom: 5px;
+                @include style-text ($app-light, 20px, 24px, 100, 2px, normal);
+                }
+                input{
+                    padding: 0 10px;
+                    width: 100%;
+                    height: 50px;
+                    border-radius: 5px;
+                    background-color: $app-grey;
+                    border: none;
+                }
+                textarea {
+                    border-radius: 5px;
+                    background-color: $app-grey;
+                    border: none;
+                    resize: none
+                }
+            }
+            .form-row-check {
+                @include estructura (row, nowrap, flex-start, center);
+                input[type=checkbox]{
+                    padding: 2px;
+                    -ms-transform: scale(2); 
+                    -moz-transform: scale(2); 
+                    -webkit-transform: scale(2);
+                    -o-transform: scale(2); 
+                    transform: scale(2);
+                    padding: 10px;
+                    margin-right: 20px;
+                    }
+                p {
+                    margin-bottom: 0;
+                }
+
+            }
+            p {
+                text-align: left;
+                margin-bottom: 20px;
+                @include style-text ($app-light, 20px, 28px, 100, 2px, normal); 
+            }
+            .form-row-button {
+                @include estructura (row, nowrap, flex-end, center);
+                margin-top: 40px;
+                input {
+                    padding: 0 10px;
+                    background-color: $submit;
+                    padding: 15px 100px;
+                    border: none;
+                    border-radius: 7px;
+                    @include style-text ($app-light, 16px, 24px, 400, 2px, uppercase);
+
+                }
+            }
+        }
+        .map-container {
+            width: 60%;
+            @include estructura (row, nowrap, flex-end, flex-end);
+        }
+    }
+}

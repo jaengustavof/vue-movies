@@ -1,0 +1,65 @@
+@import '/src/assets/scss/general.scss';
+.desktop-nav {
+    width: 70%;
+    height: 100%;
+    ul {
+        width: 100%;
+        height: 100%;
+        @include estructura (row, nowrap, flex-end, center);
+        li{
+            padding: 0 15px;
+            list-style-type: none;
+            @include style-text ($app-light, 18px, 22px, 400, 1px, uppercase);
+            cursor: pointer;
+        }
+        .selected{
+            font-weight: 600;
+            text-decoration: underline;
+        }
+    }
+    @media only screen and (max-width: 960px) {
+        display: none;
+    }
+}
+
+.mobile-nav {
+    display: none;
+    cursor: pointer;
+
+    @media only screen and (max-width: 960px) {
+        display: flex;
+    }
+    .mobile-menu {
+        width: 0;
+        max-width: 480px;
+        height: 100vh;
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 10;
+        background-color: $app-dark;
+        transition: 0.5s ease-in-out;
+        @include estructura (row, nowrap, flex-end, center);
+        &_items {
+            height: 100%;
+            width: 100%;
+            p {
+                text-align: left;
+                @include style-text ($app-light, 22px, 26px, 400, 1px, uppercase);
+                padding: 15px 20px;
+                &:hover {
+                    background-color: $app-light-25;
+                }
+            }
+        }
+        &_close {
+            padding: 20px 40px;
+            @include estructura (row, nowrap, flex-end, center);
+        }
+    }
+    .displayed {
+        width: 100%;
+        transition: 0.5s ease-in-out;
+    }
+}
+
