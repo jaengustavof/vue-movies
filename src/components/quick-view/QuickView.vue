@@ -19,7 +19,7 @@
 
         methods: {
             searchValue(value){
-                console.log('this value ', value)
+    
                 axios.get(`https://api.tvmaze.com/search/shows?q=${value}`)
                 .then(function (response) {
                     // handle success
@@ -31,7 +31,7 @@
                     store.commit('addSearchResults', {itemNames});
                     searchResults = [...store.state.searchedItems]
                     for(let item of searchResults){
-                        console.log(item.id)
+                        console.log(item.name)
                     }
 
                     return searchResults
@@ -47,10 +47,16 @@
                 }    
             },
             searchedItems () {
-                console.log(this.$store.searchedItems) 
+                return this.$store.searchedItems
             }     
         },
-
+        watch: {
+            '$store.state.searchedItems': {
+                handler () {
+                    this.searchItems
+                }
+            }
+        }
   
 
     }

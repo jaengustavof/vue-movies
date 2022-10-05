@@ -17,10 +17,22 @@
             .search-title {
             @include style-text ($app-light, 40px, 55px, 400, 1px, normal);
             text-align: left;
+            @media screen and (max-width: 1199px) { 
+                @include style-text ($app-light, 30px, 45px, 400, 1px, normal);
+            }
+            @media screen and (max-width: 860px) { 
+                @include style-text ($app-light, 22px, 38px, 400, 1px, normal);
+            }
             }
             .search-input-container {
                 width: calc(33% - 40px);
                 position: relative;
+                @media screen and (max-width: 1199px) { 
+                    width: calc(40% - 40px);
+                }
+                @media screen and (max-width: 860px) { 
+                    width: calc(50% - 40px);
+                }
                 .search-input{
                     width: 100%;
                     height: 100%;
@@ -59,25 +71,45 @@
             @include estructura (row, nowrap, space-between, stretch);
             overflow: auto;
             padding-bottom: 20px;
+            @media screen and (max-width: 1199px) { 
+                @include estructura (row, wrap, space-between, stretch);
+            }
             .movie-card{
                 position: relative;
                 width: 30%;
                 margin-right: 40px;
                 flex-shrink: 0;
+                @media screen and (max-width: 1199px) { 
+                    width: 45%;
+                    margin-bottom: 40px;
+                }
+
+                @media screen and (max-width: 860px) { 
+                    width: 100%;
+                    margin-bottom: 40px;
+                }
                 &:last-child{
                     margin-right: 0;
                 }
                 &_pic {
                     width: 100%;
+                    height: auto;
                     max-height: 600px;
-                    
-                    background-color: red;
+    
                     .fav-image {
                         object-fit: cover;
                         width: 100%;
                         height: 100%;
-
                     }
+                    @media screen and (max-width: 1599px) { //1200 - 1599
+              
+                        height: 500px;
+                    }
+                    @media screen and (max-width: 1200px) { //1200 - 1599
+    
+                        height: 600px;
+                    }
+         
                 }
                 &_info {
                     width: 100%;

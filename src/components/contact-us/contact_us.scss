@@ -10,9 +10,16 @@
         margin: auto;
         padding: 0 20px;
         @include estructura (row, nowrap, space-between, stretch);
+        @media screen and (max-width: 960px) { 
+            @include estructura (column, nowrap, space-between, center);
+        }
         .form-container {
             width: 40%;
             @include estructura (column, nowrap, flex-end, stretch);
+            @media screen and (max-width: 960px) { 
+                width: 100%;
+                margin-bottom: 40px;
+            }
             &_title {
                 text-align: left;
                 padding-bottom: 20px;
@@ -102,13 +109,21 @@
                     border: none;
                     border-radius: 7px;
                     @include style-text ($app-light, 16px, 24px, 400, 2px, uppercase);
+                    @media screen and (max-width: 660px) { 
+                        width: 100%;
+                    }
 
                 }
             }
         }
         .map-container {
             width: 60%;
+            margin: 0px 10px;
             @include estructura (row, nowrap, flex-end, flex-end);
+            @media screen and (max-width: 960px) { 
+                width: 100%;
+                @include estructura (row, nowrap, center, center);
+            }
         }
     }
 }
