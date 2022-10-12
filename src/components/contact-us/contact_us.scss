@@ -4,6 +4,9 @@
     width: 100%;
     padding: 80px 0;
     background-color: $app-dark;
+    a {
+        @include style-text ($app-light, 18px, 20px, 400, 1px, normal);
+    }
     .contact-us-container {
         width: 100%;
         max-width: 1600px;
@@ -44,12 +47,17 @@
                     width: 48%;
                     @include estructura (column, nowrap, space-between, flex-start);
                     input {
+                        @include style-text ($app-light, 14px, 14px, 100, 2px, normal);
                         padding: 0 10px;
                         width: 100%;
                         height: 50px;
                         border-radius: 5px;
                         background-color: $app-grey;
                         border: none;
+
+                    }
+                    .error {
+                        border: 1px solid $app-warging;
                     }
                 }
             }
@@ -63,6 +71,7 @@
                 @include style-text ($app-light, 20px, 24px, 100, 2px, normal);
                 }
                 input{
+                    @include style-text ($app-light, 14px, 14px, 100, 2px, normal);
                     padding: 0 10px;
                     width: 100%;
                     height: 50px;
@@ -70,7 +79,11 @@
                     background-color: $app-grey;
                     border: none;
                 }
+                .error {
+                    border: 1px solid $app-warging;
+                }
                 textarea {
+                    @include style-text ($app-light, 14px, 14px, 100, 2px, normal);
                     border-radius: 5px;
                     background-color: $app-grey;
                     border: none;
@@ -88,26 +101,43 @@
                     transform: scale(2);
                     padding: 10px;
                     margin-right: 20px;
-                    }
+                    margin-left: 10px;
+                }
+                .error {
+                    border: 1px solid $app-warging;
+                }
                 p {
                     margin-bottom: 0;
                 }
 
             }
+            #error-message {
+                margin-top: 5px;
+                @include style-text ($app-light, 20px, 28px, 400, 2px, normal); 
+            }
+
             p {
                 text-align: left;
                 margin-bottom: 20px;
                 @include style-text ($app-light, 20px, 28px, 100, 2px, normal); 
             }
+            .fail {
+                color: $app-warging!important;
+            }
+            .success {
+                color: $app-success!important;
+            }
             .form-row-button {
                 @include estructura (row, nowrap, flex-end, center);
                 margin-top: 40px;
-                input {
+                
+                button {
                     padding: 0 10px;
                     background-color: $submit;
                     padding: 15px 100px;
                     border: none;
                     border-radius: 7px;
+                    cursor: pointer;
                     @include style-text ($app-light, 16px, 24px, 400, 2px, uppercase);
                     @media screen and (max-width: 660px) { 
                         width: 100%;
@@ -119,6 +149,7 @@
         .map-container {
             width: 60%;
             margin: 0px 10px;
+            padding: 10px 10px 0 10px;
             @include estructura (row, nowrap, flex-end, flex-end);
             @media screen and (max-width: 960px) { 
                 width: 100%;

@@ -1,18 +1,33 @@
 @import '/src/assets/scss/general.scss';
+* {
+    text-align: left;
+}
 
 .quick-view {
     width: 100%;
     padding: 80px 0;
     background-color: $app-grey;
+
     .quick-view-container {
         width: 100%;
         max-width: 1600px;
         margin: auto;
         padding: 0 20px;
+        position: relative;
+        #search-results{
+            position: absolute;
+            width: calc(33% - 40px);
+            background-color: white;
+            top: 60px;
+            right: 20px;
+            z-index: 9999;
+
+        }
         .container-title-search {
             padding-bottom: 40px;
             border-bottom: 2px solid $app-light;
             position: relative;
+
             @include estructura (row, nowrap, space-between, stretch);
             .search-title {
             @include style-text ($app-light, 40px, 55px, 400, 1px, normal);
@@ -53,19 +68,10 @@
                     transform: translateY(-50%);
                 }
             }
-            .search-results{
-                position: absolute;
-                width: calc(33% - 40px);
-                background-color: white;
-                bottom: 0;
-                right: 0;
-                p {
-                    text-align: left;
-                }
-            }
+
 
         }
-        .container-cards {
+        #container-cards {
             width: 100%;
             margin-top: 25px;
             @include estructura (row, nowrap, space-between, stretch);
@@ -93,8 +99,7 @@
                 }
                 &_pic {
                     width: 100%;
-                    height: auto;
-                    max-height: 600px;
+                    height: 600px;
     
                     .fav-image {
                         object-fit: cover;
@@ -115,6 +120,7 @@
                     width: 100%;
                     background: $app-grey-light;
                     padding: 15px 15px 25px;
+                    min-height: 180px;
                     .card-info-title {
                         text-align: left;
                         @include style-text ($app-light, 30px, 40px, 600, 1px, normal);
@@ -138,6 +144,7 @@
                     right: 20px;
                     background-color: $app-dark-50;
                     border-radius: 7px;
+                    cursor: pointer;
                     @include estructura (row, nowrap, center, center);
                     .close-button{
                         height: 25px;

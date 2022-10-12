@@ -1,23 +1,31 @@
 <script>
     import store from '../../store/index';
     import axios from 'axios';
-    const favourites = [...store.state.items]
-    let searchResults = [...store.state.searchedItems]
 
-    
-    const newFavourite = 5
-    store.commit('add', {newFavourite});
+    let favourites = [...store.state.items]
+    let searchResults = [...store.state.searchedItems]
+    let closeButtons = [...store.state.items];
+
+    (function(){
+        let defaultButtons = document.getElementsByClassName('movie-card_close');
+        store.commit('addButtons', defaultButtons)
+
+    })();
+
     
     export default {
         name: 'Quick-View', 
         data() {
             return {
                 favourites,
-                searchResults
+                searchResults,
+                closeButtons,
+    
             }
         },
 
         methods: {
+
             searchValue(value){
     
                 axios.get(`https://api.tvmaze.com/search/shows?q=${value}`)
@@ -30,16 +38,16 @@
                     }
                     store.commit('addSearchResults', {itemNames});
                     searchResults = [...store.state.searchedItems]
-                    for(let item of searchResults){
-                        console.log(item.name)
-                    }
-
-                    return searchResults
+                    
+                    store.commit('insertResults', {searchResults})
+                    
+                    
                 })
                 .catch(function (error) {
                     // handle error
                     console.log(error);
                 })
+
             },
             inputValue(e) {
                 if(e.which ===13){
@@ -48,26 +56,26 @@
             },
             searchedItems () {
                 return this.$store.searchedItems
-            }     
-        },
-        watch: {
-            '$store.state.searchedItems': {
-                handler () {
-                    this.searchItems
-                }
+            },
+            removeThis(event){
+                const removeId = event.target.getAttribute('value')
+                store.commit('removeItem', removeId)
             }
+
         }
-  
 
     }
-  
     </script>
 
 <template>
 
     <div class="quick-view">
         <div class="quick-view-container">
+            <div id="search-results">
+              
+            </div>
             <div class="container-title-search">
+
                 <h2 class="search-title">Collect your favourites</h2>
                 <div class="search-input-container">
                     <input  type="text" class="search-input" placeholder="Search title and add to grid" @keydown="inputValue"/>
@@ -80,13 +88,10 @@
 
                 </div>
 
-                <div class="search-results" v-if="searchResults.length>0">
-                    <p v-for='(item) in searchResults' :key="item.id">{{item.name}}</p>
-                    <p>{{searchResults}}</p>
-                </div>
+                
             </div>
             
-            <div class="container-cards">
+            <div id="container-cards">
                 
                 <div class="movie-card" v-for='(item) in favourites' :key="item.id">
                     <div class="movie-card_pic">
@@ -95,14 +100,14 @@
                     <div class="movie-card_info">
                         <h3 class="card-info-title">{{item.name}}</h3>
         
-                        <p v-html=item.summary class="card-info-text"></p>
+                        <div v-html=item.summary class="card-info-text"></div>
                     </div>
-                    <div class="movie-card_close">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="12.728" height="12.728" viewBox="0 0 12.728 12.728" class="close-button">
-                            <g id="Group_8592" data-name="Group 8592" transform="translate(-441.636 -1013.036)">
-                                <g id="Group_8586" data-name="Group 8586" transform="translate(1226.737 -260.675) rotate(45)">
-                                <line id="Line_133" data-name="Line 133" x2="16" transform="translate(346.5 1455.8)" fill="none" stroke="#fff" stroke-width="2"/>
-                                <line id="Line_134" data-name="Line 134" x2="16" transform="translate(354.5 1447.8) rotate(90)" fill="none" stroke="#fff" stroke-width="2"/>
+                    <div class="movie-card_close" :value="item.id" @click="removeThis">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12.728" height="12.728" viewBox="0 0 12.728 12.728" class="close-button" :value="item.id">
+                            <g id="Group_8592" data-name="Group 8592" transform="translate(-441.636 -1013.036)" :value="item.id">
+                                <g id="Group_8586" data-name="Group 8586" transform="translate(1226.737 -260.675) rotate(45)" :value="item.id">
+                                <line id="Line_133" data-name="Line 133" x2="16" transform="translate(346.5 1455.8)" fill="none" stroke="#fff" stroke-width="2" :value="item.id" />
+                                <line id="Line_134" data-name="Line 134" x2="16" transform="translate(354.5 1447.8) rotate(90)" fill="none" stroke="#fff" stroke-width="2" :value="item.id"/>
                                 </g>
                             </g>
                         </svg>
@@ -118,4 +123,6 @@
 
 <style scoped lang="scss">
     @import './quick_view.scss';
+
+    
 </style>

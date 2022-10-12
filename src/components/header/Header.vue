@@ -41,7 +41,6 @@
     }
 
   }
-  {console.log(NavMenu.items)}
 </script>
 
 <style scoped lang="scss">

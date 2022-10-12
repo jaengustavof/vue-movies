@@ -4,7 +4,9 @@ footer {
     width: 100%;
     padding: 40px 0 20px;
     background-color: $app-grey;
-    
+    a {
+        @include style-text ($app-light, 18px, 20px, 400, 1px, normal);
+    }
     .footer-container {
         width: 100%;
         max-width: 1600px;
